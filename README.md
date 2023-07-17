@@ -1,7 +1,7 @@
 
-# DrivingCycleGenAnalysis
+# Driving_Cycle
 
-DrivingCycleGenAnalysis is a data-driven framework for generating and analyzing realistic driving cycles. This repository provides the necessary code and resources to implement the framework and utilize its features.
+Driving_Cycle is a data-driven framework for generating and analyzing realistic driving cycles. This repository provides the necessary code and resources to implement the framework and utilize its features.
 
 **Please note that the proposed method of code provided in this repository is currently under review for publication.**
 
