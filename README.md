@@ -1,5 +1,5 @@
 
-# Driving_Cycle
+# Driving_Cycle (Python Code will be available soon)
 
 Driving_Cycle is a data-driven framework for generating and analyzing realistic driving cycles. This repository provides the necessary code and resources to implement the framework and utilize its features.
 
