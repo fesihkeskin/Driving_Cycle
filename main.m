@@ -8,15 +8,14 @@ data_folder = "C:\path\to\data\";
 % Get the file information for all .txt files in the data folder
 file_info = dir(fullfile(data_folder, '*.txt'));
 file_names = {file_info.name};
-num_files = numel(file_names);
 
 % Initialize variables for number of cycles and segments
 num_cycles = length(file_names);
 num_segments = 6;
+data_files = cell(1, num_cycles);
 
 % Perform data preprocessing for each file
-data_files = cell(1, num_files);
-for i = 1:num_files
+for i = 1:num_cycles
     % Load the data from the current file
     data = load(fullfile(data_folder, file_names{i}));
     data = data(:, 2); % Exclude indexing (first) column and measured acceleration (third) column
@@ -40,7 +39,7 @@ for i = 1:num_files
 end
 
 % Calculate acceleration for each cylce as,
-for i = 1:num_files
+for i = 1:num_cycles
     for j = 1:length(data_files{1, i}) - 1
         data_files{1, i}(j, 2) = (data_files{1, i}(j + 1, 1) - data_files{1, i}(j, 1)) / 3.6;
     end
@@ -69,7 +68,7 @@ load(fullfile(data_folder, 'segment_sizes'));
 segments = cell(1, numel(segment_sizes));
 
 % Get segments from cycles according to the segment sizes
-for i = 1:num_files
+for i = 1:num_cycles
     driving_cycle = data_files{1, i};
     start_index = 1;
     for j = num_segments * (i - 1) + 1:num_segments * i
