@@ -63,8 +63,13 @@ max_acc = max(max_accs);
 max_speed_decrease = min_acc * 3.6;
 max_speed_increase = max_acc * 3.6;
 
+
 % Load sizes of the segments
+% Segment sizes are determined by dynamic segmentation to partition the 
+% original datasets into segments based on traffic conditions and road types.
 load(fullfile(data_folder, 'segment_sizes'));
+
+% Initialize variable for segments
 segments = cell(1, numel(segment_sizes));
 
 % Get segments from cycles according to the segment sizes
