@@ -1,0 +1,5 @@
+google-colab
+numpy
+scipy
+matplotlib
+dtaidistance
