@@ -23,8 +23,18 @@ To access the dataset, simply download the txt files available in the "Data" fol
 The code provided in this repository implements a data-driven framework for the generation and analysis of realistic driving cycles.
 
 ## Prerequisites
-To run the code, you will need Python with the necessary libraries installed. The required libraries for Python can be found in the "requirements.txt" file.
+- To run the code, you will need Python with the necessary libraries installed. The required libraries for Python can be found in the "requirements.txt" file.
+- MATLAB R2012a or later is required to run the MATLAB version (main.m) of the code.
+  
+## Usage
+You are free to use the code and data provided in this repository for research, analysis and development. 
+If you use the code or data in this repository in your work, please cite our article:
 
-Usage
+## License
+The code and data provided in this repository is licensed under the MIT License. [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-You are free to use this dataset for research, analysis, and development purposes. Please cite the source of the dataset in your work to acknowledge its origin.
+
+# Contact
+If you have any questions or feedback, please contact us at:
+
+fesihkeskin@gmail.com
