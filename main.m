@@ -109,7 +109,7 @@ for i = 1:num_segments
     avg_last_speeds(i) = mean(cellfun(@(x) x(end, 1), all_segments(i, :)));
 end
 
-% groups of combined segments
+% Groups of combined segments
 combined_segments_groups = cell(1, num_segments);
 for i = 1:num_segments
     combined_segments_groups{i} = cat(1, all_segments{i, :});
@@ -153,20 +153,20 @@ for seg = 1:num_segments
 end
 
 % Set number of Monte Carlo trials
-MCT = 1000;
+MCT = 10000;
 
 % Initialize cell arrays for Monte Carlo trials
 mct_cons_dc_speed = cell(num_segments, MCT);
 last_speed= zeros(num_segments, MCT);
 for seg = 1:num_segments
-    data_and_states = combined_segments_groups{seg};
+    data_states = combined_segments_groups{seg};
 
     % For the current segment group
-    speed_data = data_and_states(:, 1); % Speed data
+    speed_data = data_states(:, 1); % Speed data
     avg_speed = mean(speed_data); % Average speed
     max_speed = max(speed_data); % Maximum speed
     min_speed = min(speed_data); % Minimum speed
-    acc_data = data_and_states(:, 2); % Acceleration data
+    acc_data = data_states(:, 2); % Acceleration data
     avg_acc = mean(acc_data); % Average acceleration
     max_acc = max(acc_data); % Maximum acceleration
     min_acc = min(acc_data); % Minimum acceleration
@@ -185,17 +185,17 @@ for seg = 1:num_segments
     group_states = zeros(data_length, 3);
     k = 0;
 
-    for j = 1:length(v_steps) - 1
-        L_v = v_steps(j); % Lower speed of state
-        U_v = v_steps(j + 1); % Upper speed of state
+    for i = 1:length(v_steps) - 1
+        L_v = v_steps(i); % Lower speed of state
+        U_v = v_steps(i + 1); % Upper speed of state
 
-        for i = 1:length(a_steps) - 1
-            L_a = a_steps(i); % Lower Acc. of state
-            U_a = a_steps(i + 1); % Upper Acc. of state
+        for j = 1:length(a_steps) - 1
+            L_a = a_steps(j); % Lower Acc. of state
+            U_a = a_steps(j + 1); % Upper Acc. of state
             k = k + 1;
 
-            ind_a = group_index(data_and_states(:, 2) >= L_a & data_and_states(:, 2) < U_a); % Indices of Acc.
-            ind_v = group_index(data_and_states(:, 1) >= L_v & data_and_states(:, 1) < U_v); % Indices of Speed
+            ind_a = group_index(data_states(:, 2) >= L_a & data_states(:, 2) < U_a); % Indices of Acc.
+            ind_v = group_index(data_states(:, 1) >= L_v & data_states(:, 1) < U_v); % Indices of Speed
 
             matches = intersect(ind_a, ind_v);
 
@@ -210,13 +210,13 @@ for seg = 1:num_segments
     end
 
     [uniq_group_states,~,tags] = unique(group_states,'rows');
-    data_and_states(:, 3:5) = group_states;
+    data_states(:, 3:5) = group_states;
 
     % In order to Plot S-A grid Map for all segment groups
     figure1 = figure('OuterPosition', [130, 50, 1062, 708]);
     axes1 = axes('Parent', figure1);
     hold(axes1, 'on');
-    scatter(data_and_states(:, 1), data_and_states(:, 2), 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b', ...
+    scatter(data_states(:, 1), data_states(:, 2), 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b', ...
         'DisplayName', 'S-A Grid Values and States', 'MarkerFaceAlpha', 0.3, ...
         'MarkerFaceColor', [0 1 1]);
     xline(v_steps, 'HandleVisibility', 'off');
@@ -226,13 +226,13 @@ for seg = 1:num_segments
         'FontName', 'Times New Roman', 'Color', [0.635 0.0784 0.1843]);
     xlim(axes1, [speed_lower_bound speed_upper_bound - v_res]);
     ylim(axes1, [acc_lower_bound acc_upper_bound - a_res]);
-    title(['The S-A Grid Map for Driving Segment-', num2str(seg)], 'FontSize', 14);
+    title(['The S-A Grid Map for Segment Group-', num2str(seg)], 'FontSize', 14);
     xlabel('Speed (km/h)', 'FontSize', 12);
     ylabel('Acceleration (m/s^2)', 'FontSize', 12);
     % saveas(gcf, ['SA_seg_', num2str(seg), '.fig']); % For saving plot
 
     % Calculate transition probability matrix
-    tagged_dataset = data_and_states(:, 1:3);
+    tagged_dataset = data_states(:, 1:3);
     current_state = tagged_dataset(1:end - 1, 3); % Current states
     next_state = tagged_dataset(2:end, 3); % Next states
     state_transitions = [current_state, next_state];
@@ -252,13 +252,13 @@ for seg = 1:num_segments
 
         % Determine initial state for each segment
         if seg == 1 % First segment starts with zero speed and acceleration
-            [~, index] = min(abs(data_and_states(:, 1) - 0) + abs(data_and_states(:, 2) - 0));
-            first_states(seg, mcti) = data_and_states(index, 3);
+            [~, index] = min(abs(data_states(:, 1) - 0) + abs(data_states(:, 2) - 0));
+            first_states(seg, mcti) = data_states(index, 3);
         else
             % Subsequent segments start with initial states closest to
             % the final speed and acceleration of the previous segment
-            [~, index] = min(abs(data_and_states(:, 1) - last_speed(seg - 1, mcti)));
-            first_states(seg, mcti) = data_and_states(index, 3);
+            [~, index] = min(abs(data_states(:, 1) - last_speed(seg - 1, mcti)));
+            first_states(seg, mcti) = data_states(index, 3);
         end
 
         % Generate driving segment
@@ -271,23 +271,23 @@ for seg = 1:num_segments
 
         uniq_gen_states = unique(gen_states, 'stable');
         state_values = cell(1, length(uniq_gen_states));
-        state_values{1} = find(data_and_states(:, 3) == gen_states(1));
+        state_values{1} = find(data_states(:, 3) == gen_states(1));
         constructed_driving_segment = zeros(cycle_duration, 2); % Constructed driving segment
 
         for i = 2:length(uniq_gen_states)
-            state_values{i} = find(data_and_states(:, 3) == uniq_gen_states(i));
+            state_values{i} = find(data_states(:, 3) == uniq_gen_states(i));
         end
 
         for i = 1:cycle_duration
-            index_in_data_and_states = state_values{find(uniq_gen_states == gen_states(i))}; % Real data according to generated states
+            index_in_data_states = state_values{find(uniq_gen_states == gen_states(i))}; % Real data according to generated states
 
-            if length(index_in_data_and_states) == 1
-                rand_State = index_in_data_and_states; % If it's a single value
+            if length(index_in_data_states) == 1
+                rand_State = index_in_data_states; % If it's a single value
             else
-                rand_State = randsample(index_in_data_and_states, 1); % If it's multiple values, choose randomly
+                rand_State = randsample(index_in_data_states, 1); % If it's multiple values, choose randomly
             end
 
-            constructed_driving_segment(i, :) = data_and_states(rand_State, 1:2);
+            constructed_driving_segment(i, :) = data_states(rand_State, 1:2);
         end
 
         % In the first segment, the initial speed and acceleration start with 0
@@ -347,13 +347,11 @@ end
 
 % Concatenate reference segments
 comref_seg=cell(num_segments,1);
-for i=1:num_segments
-    comref_seg(i,1)=all_segments(i, ref_seg(i));
+for seg=1:num_segments
+    comref_seg(seg,1)=all_segments(seg, ref_seg(seg));
 end
 comref_segments=cell2mat(comref_seg);
 
 % Calculate the DTW distance between the constructed and
 % concatenated reference segments
-dist1 = dtw(const_cycle(:, 1), comref_segments(:, 1));
-
-
+dist_cons_ref = dtw(const_cycle(:, 1), comref_segments(:, 1));
