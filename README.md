@@ -11,6 +11,14 @@ Driving_Cycle is a data-driven framework for generating and analyzing realistic 
 -   Incorporation of Markov chain modeling, Monte Carlo simulations, and Dynamic Time Warping (DTW).
 -   Accurate representation of the complexity and stochastic nature of real-world driving behavior.
 
+## Algorithm
+Pseudo-code for the proposed algorithm.
+<div align="left">
+    <tr>
+      <th><img src="images/algorithm.png" width=400 heigth=400></th>
+    </tr>
+</div>
+
 ## Dataset
 The dataset provided in this repository consists of 19 driving cycles collected from the city of [Igdir, Turkey](https://www.google.com/maps/dir/39.9216343,44.0418135/39.9200546,44.0435517/39.9225889,44.0442167/39.9337557,44.0489844/39.9375393,44.079913/39.9372601,44.0802923/39.9043953,44.0609652/39.9193395,44.0416492/@39.9206967,44.0585684,14z/data=!4m2!4m1!3e0?entry=ttu). The driving cycles were recorded using an [On-Board Diagnostic II (OBD-II)](https://en.wikipedia.org/wiki/On-board_diagnostics) device installed in a 5-door vehicle. The data was acquired onboard using an Android device.
  
