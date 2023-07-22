@@ -17,7 +17,7 @@ The dataset provided in this repository consists of 19 driving cycles collected 
 The driving cycles cover a route of approximately 11,150 meters, including two main arteries (D080 and E99 international trade routes) connecting Turkey to Asian countries. The dataset includes driving cycles during both peak and off-peak hours, as well as on weekdays and weekends, to reflect a variety of driving situations under diverse traffic congestion scenarios.
 
 ## Accessing the Data
-To access the data, simply download the txt files available in the "Data" folder of this repository. The txt files contain time-speed profiles for each driving cycle, providing detailed temporal information about velocities, vehicle acceleration/deceleration parameters.
+To access the data, simply download the txt files available in the "[Data](https://github.com/fesihkeskin/Driving_Cycle/tree/main/Data)" folder of this repository. The txt files contain time-speed profiles for each driving cycle, providing detailed temporal information about velocities, vehicle acceleration/deceleration parameters.
 
 ## Running the Code
 The code provided in this repository implements a data-driven framework for the generation and analysis of realistic driving cycles.
@@ -25,14 +25,14 @@ The code provided in this repository implements a data-driven framework for the 
 2. Follow the instructions provided in the code comments to input the necessary parameters and paths to the data files.
 3. For MATLAB <a href="https://www.mathworks.com/"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png" alt="MATLAB Logo" height="20"> </a>
    1. Set the data folder path
-   2. Run "main.m"
+   2. Run "[main.m](https://github.com/fesihkeskin/Driving_Cycle/blob/main/main.m)"
 4. For Python: <a href="https://www.python.org/"> <img src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python Logo" height="20"> </a>
    1. Set the data folder path
-   2. In Google Colab, Jupyter Notebook, etc., upload provided .ipynb file and run the notebook cells.
-  
+   2. In Google Colab, Jupyter Notebook, etc., upload provided "[driving_cycle.ipynb](https://github.com/fesihkeskin/Driving_Cycle/blob/main/driving_cycle.ipynb)" file and run the notebook cells.
+* Note that in this study, segmentation is based on road characteristics. Segment sizes are given in the data folder as the "[sement_sizes.mat](https://github.com/fesihkeskin/Driving_Cycle/blob/main/Data/segment_sizes.mat)" file. You can get different segment sizes by using different segmentation methods in your own work.
 ## Prerequisites
-- To run the code, you will need Python with the necessary libraries installed. The required libraries for Python can be found in the "requirements.txt" file.
-- MATLAB R2012a or later is required to run the MATLAB version (main.m) of the code.
+- To run the code, you will need Python with the necessary libraries installed. The required libraries for Python can be found in the "[requirements.txt](https://github.com/fesihkeskin/Driving_Cycle/blob/main/requirements.txt)" file.
+- MATLAB R2012a or later is required to run the MATLAB code.
   
 ## Usage
 You are free to use the code and data provided in this repository for research, analysis and development. 
