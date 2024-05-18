@@ -37,9 +37,32 @@ The code provided in this repository implements a data-driven framework for the 
    1. Set the data folder path
    2. In Google Colab <a href="https://colab.research.google.com/"> <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab"  height="20"> </a>, Jupyter Notebook <a href="https://jupyter.org/"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1200px-Jupyter_logo.svg.png" alt="Jupyter Notebook" height="20"> </a>, etc., upload provided "[driving_cycle.ipynb](https://github.com/fesihkeskin/Driving_Cycle/blob/main/driving_cycle.ipynb)" file and run the notebook cells.
 * Note that in this study, segmentation is based on road characteristics. Segment sizes are given in the data folder as the "[sement_sizes.mat](https://github.com/fesihkeskin/Driving_Cycle/blob/main/Data/segment_sizes.mat)" file. You can get different segment sizes by using different segmentation methods in your own work.
+
 ## Prerequisites
-- To run the code, you will need Python with the necessary libraries installed. The required libraries for Python can be found in the "[requirements.txt](https://github.com/fesihkeskin/Driving_Cycle/blob/main/requirements.txt)" file.
-- MATLAB R2012a or later is required to run the MATLAB code.
+
+To run the code, you will need the following:
+
+- **Python** with the necessary libraries installed. The required libraries for Python can be found in the "[requirements.txt](https://github.com/fesihkeskin/Driving_Cycle/blob/main/requirements.txt)" file.
+- **MATLAB R2012a** or later to run the MATLAB code.
+
+## Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/fesihkeskin/Driving_Cycle.git
+    cd Driving_Cycle
+    ```
+
+2. **Install Python dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Ensure MATLAB R2012a or later is installed**.
+
+You can now run the code as described in the documentation.
+
+
 
 ## Usage
 You are free to use the code and data provided in this repository for research, analysis and development. 
