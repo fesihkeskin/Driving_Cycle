@@ -1,6 +1,6 @@
 # Driving Cycle
 
-Driving_Cycle is a data-driven framework for generating and analyzing realistic driving cycles. This repository provides the necessary code and resources to implement the framework and utilize its features.
+Welcome to the repository for our paper, "[A Data-Driven Framework for Driving Cycle Generation and Analysis.](https://doi.org/10.1177/03611981241260700)" Here, we present a novel methodology combining Markov chain modeling, Monte Carlo simulation, and Dynamic Time Warping to generate realistic driving cycles, specifically tailored for the unique traffic conditions of [Igdir, Turkey](https://www.google.com/maps/dir/39.9216343,44.0418135/39.9200546,44.0435517/39.9225889,44.0442167/39.9337557,44.0489844/39.9375393,44.079913/39.9372601,44.0802923/39.9043953,44.0609652/39.9193395,44.0416492/@39.9206967,44.0585684,14z/data=!4m2!4m1!3e0?entry=ttu). Explore our code and datasets to see how we accurately model driving patterns to aid in sustainable mobility solutions.
 
 ## Features
 
