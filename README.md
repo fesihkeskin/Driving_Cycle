@@ -2,8 +2,6 @@
 
 Driving_Cycle is a data-driven framework for generating and analyzing realistic driving cycles. This repository provides the necessary code and resources to implement the framework and utilize its features.
 
-➡️ **Please note that the proposed method of code provided in this repository is currently under review for publication.**
-
 ## Features
 
 -   Generation of realistic driving cycles using advanced techniques.
@@ -68,15 +66,19 @@ You can now run the code as described in the documentation.
 You are free to use the code and data provided in this repository for research, analysis and development. 
 If you use the code or data in this repository in your work, please cite our article:
 ```diff
-@Article{keskin2023,
-  author  = {Fesih Keskin,Melih Yıldız,Bircan Aslannur},
-  journal = {Under Review},
-  title   = {A Data-Driven Framework for Driving Cycle Generation and Analysis},
-  year    = {2023},
+@Article{Keskin2024,
+  author    = {Keskin, Fesih and Yıldız, Melih and Arslannur, Bircan},
+  journal   = {Transportation Research Record: Journal of the Transportation Research Board},
+  title     = {A Data-Driven Framework for Driving Cycle Generation and Analysis},
+  year      = {2024},
+  issn      = {2169-4052},
+  month     = jul,
+  doi       = {10.1177/03611981241260700},
+  publisher = {SAGE Publications},
 }
 ```
 ```diff
-Keskin, F., Yıldız, M., & Aslannur, B. (2023). A Data-Driven Framework for Driving Cycle Generation and Analysis. Under Review.
+Keskin, F., Yıldız, M., & Arslannur, B. (2024). A data-driven framework for driving cycle generation and analysis. *Transportation Research Record: Journal of the Transportation Research Board*. https://doi.org/10.1177/03611981241260700
 ```
 
 ## License
